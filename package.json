@@ -1,0 +1,25 @@
+{
+  "name": "UGV",
+  "version": "0.1.0",
+  "description": "Unmanned Ground Vehicle",
+  "main": "index.js",
+  "scripts": {
+    "test": "runtests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/milotoor/UGV"
+  },
+  "author": "Milo Toor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/milotoor/UGV/issues"
+  },
+  "homepage": "https://github.com/milotoor/UGV",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-jshint": "~0.6.3",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt-contrib-uglify": "~0.2.2"
+  }
+}
