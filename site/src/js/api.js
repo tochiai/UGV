@@ -16,20 +16,20 @@ BackendAPI.prototype.move = {};
 
 
 BackendAPI.prototype.move.up = function () {
-
+    console.log('moving up...');
 };
 
 
 BackendAPI.prototype.move.down = function () {
-
+    console.log('moving down...');
 };
 
 
 BackendAPI.prototype.move.left = function () {
-
+    console.log('moving left...');
 };
 
 
 BackendAPI.prototype.move.right = function () {
-
+    console.log('moving right...');
 };

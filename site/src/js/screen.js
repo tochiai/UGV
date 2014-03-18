@@ -1,26 +1,43 @@
 
-var start_with_crosshair = true;
+/* SCREEN.JS
+ * This file contains all the logic for interacting with the screen and its
+ * video stream.
+ */
+var Screen = function () {
+    this.start_with_crosshair = true;
 
-var move_crosshair = function () {
+    // Couple of cached jQuery objects for easy reference
+    this.screen = $('#screen');
+    this.crosshair_input = $('#show-crosshair');
+
+    // Initialize
+    this.init();
+};
+
+
+Screen.prototype.move_crosshair = function () {
     console.log('hi');
 };
 
-var toggle_crosshair = function () {
-    var new_state = $('#show-crosshair').prop('checked');
+
+Screen.prototype.toggle_crosshair = function () {
+    var new_state = this.crosshair_input.prop('checked');
 
     // If we're now showing it, add the event listener on the screen
     if (new_state) {
-        $('#screen').mousemove(move_crosshair);
+        this.screen.mousemove(this.move_crosshair);
     }
 
     // Otherwise, remove it
     else {
-        $('#screen').off('mousemove');
+        this.screen.off('mousemove');
     }
 };
 
-var init = function () {
-    var crosshair_input = $('#show-crosshair');
-    crosshair_input.change(toggle_crosshair);
-    crosshair_input.prop('checked', start_with_crosshair).change();
+
+Screen.prototype.init = function () {
+    // Set up the event listener on the 'Show Crosshair' input and then trigger
+    // it to set up the initial state.
+    this.crosshair_input.change(this.toggle_crosshair.bind(this));
+    this.crosshair_input.prop('checked', this.start_with_crosshair).change();
 };
