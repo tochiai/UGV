@@ -1,4 +1,8 @@
 
+/* CONTROLLER.JS
+ * This file defines the app controller. All user input is handled through
+ * the methods found here.
+ */
 var Controller = function () {
     // Initialize the API
     this.api = new BackendAPI();
@@ -7,7 +11,7 @@ var Controller = function () {
     this.screen = new Screen();
 
     // Listen for key events
-    $(document).keydown(_.bind(this.handle_keypress, this));
+    $(document).keydown(this.handle_keypress.bind(this));
 };
 
 
