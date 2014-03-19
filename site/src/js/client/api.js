@@ -7,7 +7,7 @@
 var BackendAPI = function () {
     // The URL and port of the UGV's server
     this.url = 'ws://localhost';
-    this.port = 5858;
+    this.port = 9000;
 
     // Connect to Binary.js server
     this.client = new BinaryClient(this.url + ':' + this.port);
