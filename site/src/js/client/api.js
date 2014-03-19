@@ -6,8 +6,29 @@
  */
 var BackendAPI = function () {
     // The URL and port of the UGV's server
-    this.url = null;
-    this.port = null;
+    this.url = 'ws://localhost';
+    this.port = 9000;
+
+    // Connect to Binary.js server
+    this.client = new BinaryClient(this.url + ':' + this.port);
+
+    // Received new stream from server!
+    this.client.on('stream', function (stream, meta) {
+        // Buffer for parts
+        var parts = [];
+
+        // Got new data
+        stream.on('data', function (data) {
+            parts.push(data);
+        });
+
+        stream.on('end', function () {
+            // Display new data in browser!
+            var img = document.createElement("img");
+            img.src = (window.URL || window.webkitURL).createObjectURL(new Blob(parts));
+            document.body.appendChild(img);
+        });
+    });
 };
 
 /*** MOVE FUNCTIONS **********************************************************/
