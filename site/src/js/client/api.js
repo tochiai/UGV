@@ -7,10 +7,12 @@
 var BackendAPI = function () {
     // The URL and port of the UGV's server
     this.url = 'ws://localhost';
-    this.port = 9000;
+    this.port = 5858;
 
     // Connect to Binary.js server
     this.client = new BinaryClient(this.url + ':' + this.port);
+
+    var screen = $('#screen');
 
     // Received new stream from server!
     this.client.on('stream', function (stream, meta) {
@@ -24,9 +26,9 @@ var BackendAPI = function () {
 
         stream.on('end', function () {
             // Display new data in browser!
-            var img = document.createElement("img");
-            img.src = (window.URL || window.webkitURL).createObjectURL(new Blob(parts));
-            document.body.appendChild(img);
+            var url = (window.URL || window.webkitURL).createObjectURL(new Blob(parts));
+            screen.css('background-image', 'url(' + url + ')');
+            console.log(new Date().getMilliseconds());
         });
     });
 };
